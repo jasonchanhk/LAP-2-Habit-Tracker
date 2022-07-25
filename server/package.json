@@ -1,24 +1,36 @@
 {
-  "name": "server",
+  "name": "lap-2-habit-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon server.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonchanhk/Lap-2-Habit-Tracker.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasonchanhk/Lap-2-Habit-Tracker/issues"
+  },
+  "homepage": "https://github.com/jasonchanhk/Lap-2-Habit-Tracker#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
   "dependencies": {
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.4.6",
+    "validator": "^13.7.0"
   },
   "engines": {
     "node": "14.x"
