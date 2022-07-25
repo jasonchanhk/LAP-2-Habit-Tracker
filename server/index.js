@@ -16,4 +16,6 @@ db.once("open", function () {
   console.log("Connected successfully");
 });
 
-app.listen(port, () => console.log(`Express just departed from port ${port}!`))
+
+
+app.listen(port, () => {console.log(`Express just departed from port ${port}!`)})
