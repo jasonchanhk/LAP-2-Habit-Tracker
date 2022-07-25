@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-const app = require('./server');
-const mongoose = require('./dbConfig/init.js');
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => console.log(`Express just departed from port ${port}!`));
-=======
 const app = require('./server')
 const mongoose = require('mongoose');
 const port = process.env.PORT || 3000;
@@ -24,4 +17,3 @@ db.once("open", function () {
 });
 
 app.listen(port, () => console.log(`Express just departed from port ${port}!`))
->>>>>>> 1ce980548be36eb95baaec5c4506e0a7d04efed1
