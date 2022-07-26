@@ -15,9 +15,9 @@ const login = async (email, password) => {
     console.log(result);
     if (result.data.status === "success") {
       alert("Login was successfull!");
-      window.setTimeout(() => {
-        location.assign("/templates/Lap2-Project/Backend/Client/udash.html?");
-      }, 50);
+      // window.setTimeout(() => {
+      //   location.assign("/templates/Lap2-Project/Backend/Client/udash.html?");
+      // }, 50);
     }
   } catch (err) {
     document.querySelector(".signup-para").textContent =
@@ -32,8 +32,8 @@ document
   .addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const email = document.querySelector(".signup-email").value;
-    const password = document.querySelector(".signup-password").value;
+    const email = document.querySelector(".login-email").value;
+    const password = document.querySelector(".login-password").value;
 
     login(email, password);
   });
