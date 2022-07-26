@@ -14,9 +14,9 @@ const login = async (email, password) => {
 
     console.log(result);
     if (result.data.status === "success") {
-      alert("Login was successfull!");
-      window.setTimeout(() => {
-        location.assign("/templates/Lap2-Project/Backend/Client/udash.html?");
+      setTimeout(() => {
+        const decoded = jwt_decode(result.data.token)
+        window.location.assign(`/udash.html?${decoded.id}`);
       }, 50);
     }
   } catch (err) {
