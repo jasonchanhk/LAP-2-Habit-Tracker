@@ -109,18 +109,8 @@ router.get("/:habitid", async (req, res) => {
 // PATCH UpdateHabitById
 // PATCH '/:id'
 
-<<<<<<< HEAD
-router.delete("/:id", async (request, response) => {
-console.log('this is a test')
-    try{
-    const habits = await habitModel.delete((request.body), request.params.id);
-    response.status(201).send('Deleted');
-} catch (err) {
-    console.log(err)
-    response.status(422).json({err})
-} 
-})
-=======
+
+
 router.patch("/:habitid", async (req, res) => {
 
     try {
