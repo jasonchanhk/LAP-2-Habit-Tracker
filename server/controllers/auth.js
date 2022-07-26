@@ -72,6 +72,7 @@ exports.login = catchAsync(async (req, res, next) => {
 //////////////////////////////////////////////////////// The protect function below needs to be required in the UserDatabase (const authController = require ./..controller/authController);file, and also added as a middleware before the routes is made accessible to the client. (authController.protect)////////////\\\\\\\\\\\\\\\\\\\\\\\\\/////////////////////////////
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting the token and check if it's there
+  console.log(req)
   let token;
   if (
     req.headers.authorization &&
@@ -80,6 +81,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     token = req.headers.authorization.split(" ")[1];
   } else if (req.cookies.jwt) {
     token = req.cookies.jwt;
+  } else if (req.headers.cookie) {
+    token = req.headers.cookie.split("=")[1];
   }
 
   if (!token) {
