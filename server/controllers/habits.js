@@ -1,12 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require("./auth");
 const habitModel = require('../models/habit')
 
-// GET AllHabits
-// GET '/'
+const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
 
-router.get("/", async (req, res) => {
+// GET AllHabits
+// GET '/all'
+
+router.get("/all", 
+    auth.protect,
+    auth.restrictTo("admin"),
+    async (req, res) => {
+
     const habits = await habitModel.getAllHabits();
 
     try {
@@ -50,10 +58,18 @@ function checkCountPer(day, habitId){
     }, day)
 }
 
-router.post("/", async (req, res) => {
+async function retrieveUserId(token){
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  return decoded.id
+}
 
-    console.log(req.body)
-    const { userId, title, description, rep, freq } = req.body
+router.post("/", 
+    auth.protect, 
+    async (req, res) => {
+
+    
+    const userId = await retrieveUserId(req.cookies.jwt)
+    const { title, description, rep, freq } = req.body
 
     try {
         const habit = await habitModel.createHabit({
@@ -79,13 +95,14 @@ router.post("/", async (req, res) => {
 });
 
 // GET findHabitByUserId
-// GET '/:userId'
+// GET '/'
 
-router.get("/userId/:userId", async (req, res) => {
-
-    console.log(req.params.userId)
+router.get("/", 
+    auth.protect,
+    async (req, res) => {
+    const userId = await retrieveUserId(req.cookies.jwt)
     try {
-        const response = await habitModel.getHabitbyUserId(req.params.userId);
+        const response = await habitModel.getHabitbyUserId(userId);
         res.send(response);
     } catch (error) {
         res.status(500).send(error);
@@ -95,7 +112,9 @@ router.get("/userId/:userId", async (req, res) => {
 // GET findHbaitByHabitId
 // GET '/:habitId'
 
-router.get("/:habitid", async (req, res) => {
+router.get("/:habitid", 
+    auth.protect,
+    async (req, res) => {
 
     console.log(req.params.habitid)
     try {
@@ -109,7 +128,9 @@ router.get("/:habitid", async (req, res) => {
 // PATCH UpdateHabitById
 // PATCH '/:id'
 
-router.patch("/:habitid", async (req, res) => {
+router.patch("/:habitid",
+    auth.protect, 
+    async (req, res) => {
 
     try {
         const habit = await habitModel.updateHabit(req.params.habitid, req.body);
@@ -122,7 +143,9 @@ router.patch("/:habitid", async (req, res) => {
 // DELETE DestroyHabitById
 // DELETE '/:id'
 
-router.delete("/:habitid", async (req, res) => {
+router.delete("/:habitid",  
+    auth.protect,
+    async (req, res) => {
 
     console.log(req.params.habitid)
     try {
