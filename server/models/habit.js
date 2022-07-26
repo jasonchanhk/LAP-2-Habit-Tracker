@@ -47,11 +47,7 @@ const HabitSchema = new mongoose.Schema({
 
 
 const Habit = mongoose.model("habits", HabitSchema);
-
-<<<<<<< HEAD
-
-module.exports = Habit
-=======
+ 
 class HabitService{
     static async getAllHabits(){
         try {
@@ -118,4 +114,3 @@ class HabitService{
 }
 
 module.exports = HabitService
->>>>>>> 66ed8ec757bdf1e5b318889d4e41e4aa4d9c0dfd
