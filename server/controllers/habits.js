@@ -146,6 +146,5 @@ router.delete("/:habitid", async (req, res) => {
 });
 
 
->>>>>>> 66ed8ec757bdf1e5b318889d4e41e4aa4d9c0dfd
 
 module.exports = router
