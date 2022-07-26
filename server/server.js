@@ -1,20 +1,30 @@
-const express = require('express')
-const cors = require("cors")
+const mongoose = require("mongoose");
 
-const app = express()
+const dotenv = require("dotenv");
 
-app.use(express.json());
-app.use(cors("*"));
+dotenv.config({ path: "./config.env" });
 
-const habits = require('./controllers/habits')
+const app = require("./app");
 
-app.use('/habits', habits)
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
 
-app.get('/:id', (req, res) => {
-    setInterval(() => {
-        console.log(`5 seconds pass${req.params.id}`)
-    }, 5000)
-    res.json({ message: 'Welcome to Team 3 server!'})
-})
+//Mongoose is a mongoDB Driver that allows our Node code to access and interact with a MongoDB database.
 
-module.exports = app
+mongoose
+  // the below connection method will return a promise.
+  .connect(DB, {
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    // useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+  // the below .then method will run when the promise is resolved.
+  .then(() => console.log("DB connection successful!"));
+
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`App is running on port ${port}...`);
+});
