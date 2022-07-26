@@ -48,7 +48,15 @@ router.get("/", async (request, response) => {
 // PATCH UpdateHabitById
 // PATCH '/:id'
 
-// DELETE DestroyHabitById
-// DELETE '/:id')
+router.delete("/:id", async (request, response) => {
+console.log('this is a test')
+    try{
+    const habits = await habitModel.delete((request.body), request.params.id);
+    response.status(201).send('Deleted');
+} catch (err) {
+    console.log(err)
+    response.status(422).json({err})
+} 
+})
 
 module.exports = router
