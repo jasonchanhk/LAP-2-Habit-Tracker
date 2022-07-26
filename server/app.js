@@ -8,7 +8,7 @@ const xss = require("xss-clean");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const userRouter = require("./routes/user");
-// const habitRouter = require("./routes/habitRoute");
+const habitRouter = require("./controllers/habits");
 
 //start express app
 const app = express();
@@ -53,6 +53,6 @@ app.use((req, res, next) => {
 
 // 3) ROUTES
 app.use("/users", userRouter);
-// app.use("/habits", habitRouter);
+app.use("/habits", habitRouter);
 
 module.exports = app;
