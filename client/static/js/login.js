@@ -20,10 +20,10 @@ const login = async (email, password) => {
       // }, 50);
     }
   } catch (err) {
-    document.querySelector(".signup-para").textContent =
+    document.querySelector(".login-para").textContent =
       "💥💥💥incorrect email or password please try again!";
-    document.querySelector(".signup-para").style.color = "red";
-    document.querySelector(".signup-para").style.fontSize = "18px";
+    document.querySelector(".login-para").style.color = "red";
+    document.querySelector(".login-para").style.fontSize = "18px";
   }
 };
 
