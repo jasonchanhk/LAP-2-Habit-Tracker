@@ -72,7 +72,6 @@ exports.login = catchAsync(async (req, res, next) => {
 //////////////////////////////////////////////////////// The protect function below needs to be required in the UserDatabase (const authController = require ./..controller/authController);file, and also added as a middleware before the routes is made accessible to the client. (authController.protect)////////////\\\\\\\\\\\\\\\\\\\\\\\\\/////////////////////////////
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting the token and check if it's there
-  console.log(req)
   let token;
   if (
     req.headers.authorization &&
