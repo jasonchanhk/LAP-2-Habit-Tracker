@@ -18,6 +18,22 @@ exports.getAllUsers = catchAsync(async (req, res) => {
   });
 });
 
+exports.getOneUser = catchAsync(async (req, res) => {
+  const user = await User.find({_id: req.params.id});
+
+  if (!user) {
+    return next(new AppError("No user found", 404));
+  }
+  //SEND RESPONSE//
+  res.status(200).json({
+    status: "success",
+    results: user.length,
+    data: {
+      user,
+    },
+  });
+});
+
 exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
 
