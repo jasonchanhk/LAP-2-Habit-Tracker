@@ -15,9 +15,9 @@ const login = async (email, password) => {
     console.log(result);
     if (result.data.status === "success") {
       alert("Login was successfull!");
-      // window.setTimeout(() => {
-      //   location.assign("/templates/Lap2-Project/Backend/Client/udash.html?");
-      // }, 50);
+      window.setTimeout(() => {
+        location.assign("www.google.com");
+      }, 50);
     }
   } catch (err) {
     document.querySelector(".login-para").textContent =

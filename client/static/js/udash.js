@@ -177,9 +177,9 @@ async function deletePostData(id) {
     });
     console.log(result)
     if (result.request.status == 200) {
-      // message.textContent = 'Your habit has successfully been deleted!'
-  
-      // alert('Your habit has successfully been deleted!')
+      
+      alert("Habit Successfully Deleted!")
+
       console.log('Your habit has been deleted!')
       setTimeout(() => {
         window.location.reload();
