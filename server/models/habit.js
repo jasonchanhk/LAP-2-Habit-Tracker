@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const User = require("./user");
 
 const HabitSchema = new mongoose.Schema({
   userId: {
@@ -107,6 +108,15 @@ class HabitService{
         try {
             const listHabitResponse =  await Habit.find({userId: userId});
             return listHabitResponse;
+        } catch (error) {
+            console.log(`Habit not found. ${error}`)
+        }
+    }
+
+    static async getNamebyUserId(userId){
+        try {
+            const nameResponse =  await User.find({userId: userId});
+            return nameResponse;
         } catch (error) {
             console.log(`Habit not found. ${error}`)
         }
