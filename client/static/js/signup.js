@@ -39,3 +39,12 @@ document
 
     signup(name, email, password, passwordConfirm);
   });
+
+const display = document.querySelector(".cta-btn-home-page");
+
+display.addEventListener("click", (e) => {
+  document.querySelector("#home").classList.toggle("signup-login-display");
+  document
+    .querySelector("#login-page")
+    .classList.toggle("signup-login-display");
+});
