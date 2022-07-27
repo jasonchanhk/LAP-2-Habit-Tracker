@@ -11,96 +11,90 @@ const habitContainer = document.querySelector('.habit-tabs-container')
 
 const trackerContainer = document.querySelector('.tracker-container')
 
-async function clickToUpdateCount(habit, action){
+async function clickToUpdateCount(habit, action) {
   console.log(habit._id, `is ${action}ing`)
-  if(habit.count = 0){
-    alert("cannot be lower than 0")
-  }else{
+  if (habit.count == 0 && action == 'minus') {
+    alert("You cannot update the count lower than 0")
+  }else if(habit.count == habit.rep && action == 'add'){
+    alert(`You had already completed this ${habit.freq} task and could not add anymore!`)
+  } else {
     let url
-    if(action == 'add'){
+    if (action == 'add') {
       url = `http://127.0.0.1:8000/habits/${habit._id}/add`
-    }else if(action == 'minus'){
+    } else if (action == 'minus') {
       url = `http://127.0.0.1:8000/habits/${habit._id}/minus`
     }
     console.log(url)
-    const result = await axios({
-      method: "PATCH",
-      url: url,
-      withCredentials: true,
-    });
-
-    // console.log(result)
-  }
+    try {
+      const result = await axios({
+        method: "PATCH",
+        url: url,
+        withCredentials: true,
+      });
+      if (result.request.status == 200) {
+      
+        alert("Update successful!")
   
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
+      }
+    }catch(err){
+      console.log(err)
+    }
+  }
+
 }
 
-function renderTracker(habit){
-  // <div class="tracker-info-box">
-  //   <div class="tracker-box five">
-  //     <p class="tracker-text">Status</p>
-  //   </div>
-  //   <div class="tracker-box one">
-  //     <p class="tracker-text">10,000 steps a day</p>
-  //     <p class="tracker-difficulty">0/5</p>
-  //   </div>
-  //   <div class="tracker-box two">
-  //     <p class="tracker-text">Frequency</p>
-  //     <p class="tracker-result">Daily</p>
-  //   </div>
-  //   <div class="tracker-box three">
-  //     <p class="tracker-text">Streak</p>
-  //     <p class="completion-nos">5</p>
-  //   </div>
-  //   <div class="tracker-box four">
-  //     <p class="tracker-text">Total</p>
-  //     <p class="completion-nos">5</p>
-  //   </div>    
-  // </div>
+function renderTracker(habit) {
 
   const tracker_info_box = document.createElement('div')
   tracker_info_box.setAttribute('class', 'tracker-info-box')
 
-  const tracker_box_5 = document.createElement('div')
-  tracker_box_5.setAttribute('class', 'tracker-box five')
-  tracker_box_5.innerHTML = `<p class="tracker-text">Status</p>`
+  const tracker_box_status = document.createElement('div')
+  tracker_box_status.setAttribute('class', 'tracker-box two')
+  tracker_box_status.innerHTML = `<p class="tracker-text">Status</p><p class="tracker-result">none</p>`
 
-  const tracker_box_1 = document.createElement('div')
-  tracker_box_1.setAttribute('class', 'tracker-box one')
-  tracker_box_1.innerHTML = `<p class="tracker-text">${habit.title}</p>`
+  const add_btn = document.createElement('button')
+  add_btn.textContent = '+'
+  add_btn.setAttribute('class', 'add_btn')
+  add_btn.onclick = () => {clickToUpdateCount(habit, 'add')}
 
-  const tracker_box_2 = document.createElement('div')
-  tracker_box_2.setAttribute('class', 'tracker-box two')
-  tracker_box_2.innerHTML = `<p class="tracker-text">Frequency</p>`
+  const minus_btn = document.createElement('button')
+  minus_btn.textContent = '-'
+  minus_btn.setAttribute('class', 'minus_btn')
+  minus_btn.onclick = () => {clickToUpdateCount(habit, 'minus')}
 
-  const tracker_box_3 = document.createElement('div')
-  tracker_box_3.setAttribute('class', 'tracker-box three')
-  tracker_box_3.innerHTML = `<p class="tracker-text">Streak</p>`
+  const title_paragraph = document.createElement('p')
+  title_paragraph.setAttribute('class', 'tracker-text')
+  title_paragraph.textContent = habit.title
 
-  const tracker_box_4 = document.createElement('div')
-  tracker_box_4.setAttribute('class', 'tracker-box four')
-  tracker_box_4.innerHTML = `<p class="tracker-text">Total</p>`
+  const main_paragraph = document.createElement('p')
+  main_paragraph.setAttribute('class', 'tracker-result')
 
-  tracker_info_box.append(tracker_box_5, tracker_box_1, tracker_box_2, tracker_box_3, tracker_box_4)
+  const span_group = document.createElement('span')
+  span_group.setAttribute('class', 'span-group')
+  span_group.innerHTML = `<span class="habit-count">${habit.count}</span><span class="habit-rep">/${habit.rep}</span><span class="habit-freq">${habit.freq}</span>`
+
+  main_paragraph.append(add_btn, span_group, minus_btn)
+
+  const tracker_box_main = document.createElement('div')
+  tracker_box_main.setAttribute('class', 'tracker-box one')
+  tracker_box_main.append(title_paragraph, main_paragraph)
+
+  const tracker_box_streak = document.createElement('div')
+  tracker_box_streak.setAttribute('class', 'tracker-box two')
+  tracker_box_streak.innerHTML = `<p class="tracker-text">Streak</p><p class="tracker-result habit-side-info">${habit.streak}</p>`
+
+  const tracker_box_total = document.createElement('div')
+  tracker_box_total.setAttribute('class', 'tracker-box two')
+  tracker_box_total.innerHTML = `<p class="tracker-text">Total</p><p class="tracker-result habit-side-info">${habit.total}</p>`
+
+  tracker_info_box.append(tracker_box_status, tracker_box_main, tracker_box_streak, tracker_box_total)
   trackerContainer.append(tracker_info_box)
-  // const plusBut = document.createElement('button')
-  // plusBut.setAttribute('class', 'add-habit-btn-lft')
-  // plusBut.textContent = '+'
-  // plusBut.onclick = () => {clickToUpdateCount(habit, 'add')}
-
-  // const titleParagraph = document.createElement('div')
-  // titleParagraph.setAttribute('class', 'habit-text')
-  // titleParagraph.innerHTML = `
-  // <h3>${habit.title}</h3>
-  // <div>${habit.description}</div>
-  // `
-
-  // const minusBut = document.createElement('button')
-  // minusBut.textContent = '-'
-  // minusBut.setAttribute('class', 'add-habit-btn-rgt')
-  // minusBut.onclick = () => {clickToUpdateCount(habit, 'minus')}
 }
 
-async function fetchUserHabit(){
+async function fetchUserHabit() {
   const result = await axios({
     method: "GET",
     url: "http://127.0.0.1:8000/habits",
@@ -114,7 +108,7 @@ async function fetchUserHabit(){
     const plusBut = document.createElement('button')
     plusBut.setAttribute('class', 'add-habit-btn-lft')
     plusBut.innerHTML = '<i class="fa fa-pencil" style="font-size:25px;"></i>'
-    plusBut.onclick = () => {clickToUpdateCount(habit, 'add')}
+
 
     const titleParagraph = document.createElement('div')
     titleParagraph.setAttribute('class', 'habit-text')
@@ -131,7 +125,7 @@ async function fetchUserHabit(){
     // const counter = document.createElement('p')
     // counter.textContent = `${habit.count}/${habit.rep} ${habit.freq}`
 
-  
+
 
     div.append(plusBut, titleParagraph, minusBut)
 
@@ -143,7 +137,7 @@ async function fetchUserHabit(){
 fetchUserHabit()
 
 async function postNewData() {
-  try{
+  try {
     const result = await axios({
       method: "POST",
       url: "http://127.0.0.1:8000/habits",
@@ -168,8 +162,8 @@ async function postNewData() {
         window.location.reload();
       }, 1000);
     }
-  }catch(err){
-
+  } catch (err) {
+    console.log(err)
   }
 }
 
