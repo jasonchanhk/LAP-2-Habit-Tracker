@@ -5,6 +5,8 @@ const frequency = document.getElementById('frequency-text');
 
 const submitBtn = document.getElementById('submit-button');
 
+const deleteBtn = document.getElementById('add-habit-btn-rgt')
+
 const habitContainer = document.querySelector('.habit-tabs-container')
 
 const trackerContainer = document.querySelector('.tracker-container')
@@ -27,7 +29,7 @@ async function clickToUpdateCount(habit, action){
       withCredentials: true,
     });
 
-    console.log(result)
+    // console.log(result)
   }
   
 }
@@ -111,7 +113,7 @@ async function fetchUserHabit(){
 
     const plusBut = document.createElement('button')
     plusBut.setAttribute('class', 'add-habit-btn-lft')
-    plusBut.textContent = '+'
+    plusBut.innerHTML = '<i class="fa fa-pencil" style="font-size:25px;"></i>'
     plusBut.onclick = () => {clickToUpdateCount(habit, 'add')}
 
     const titleParagraph = document.createElement('div')
@@ -122,9 +124,9 @@ async function fetchUserHabit(){
     `
 
     const minusBut = document.createElement('button')
-    minusBut.textContent = '-'
+    minusBut.innerHTML = '<i class="fa fa-trash" style="font-size:25px;"></i>'
     minusBut.setAttribute('class', 'add-habit-btn-rgt')
-    minusBut.onclick = () => {clickToUpdateCount(habit, 'minus')}
+    minusBut.onclick = () => {deletePostData(habit._id)}
     
     // const counter = document.createElement('p')
     // counter.textContent = `${habit.count}/${habit.rep} ${habit.freq}`
@@ -153,7 +155,7 @@ async function postNewData() {
       },
       withCredentials: true,
     });
-    console.log(result)
+    // console.log(result)
     if (result.request.status == 200) {
       const message = document.createElement('h3')
       message.textContent = 'Your habit has successfully been added!'
@@ -171,10 +173,38 @@ async function postNewData() {
   }
 }
 
+async function deletePostData(id) {
+  // console.log(_id)
+  try{
+    const result = await axios({
+      method: "DELETE",
+      url: `http://127.0.0.1:8000/habits/${id}`,
+      withCredentials: true,
+    });
+    console.log(result)
+    if (result.request.status == 200) {
+      // message.textContent = 'Your habit has successfully been deleted!'
+  
+      // alert('Your habit has successfully been deleted!')
+      console.log('Your habit has been deleted!')
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  }catch(err){
+
+  }
+}
+
+
+
 submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   postNewData();
 });
 
-
+// deleteBtn.addEventListener('click', (e) => {
+//   e.preventDefault()
+//   deletePostData(id)
+// });
 
