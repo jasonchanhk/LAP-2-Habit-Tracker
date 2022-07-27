@@ -16,16 +16,18 @@
       crossorigin="cors"
       referrerpolicy="no-referrer"
     ></script>
-    <script defer src="static/js/login.js"></script>
+    <!-- <script defer src="static/js/login.js"></script> -->
     <script defer src="static/js/signup.js"></script>
     <title>Home-page</title>
   </head>
   <body>
     <div class="logo-container"><p class="logo">LOGO</p></div>
     <div class="cta-btn-home-page-container">
-      <button class="cta-btn-home-page">Login</button>
+      <a class="login-cta-btn-home-page-link" href="#">
+        <button class="cta-btn-home-page">Login</button></a
+      >
     </div>
-    <section class="home-page">
+    <section id="home" class="home-page">
       <div class="tag-line-container">
         <span class="tag-line1">Motivate yourself to</span
         ><span class="tag-line2">achieve your goals.</span>
@@ -65,6 +67,42 @@
         <img class="snail-img" src="bgr-snails.png" alt="3D image of snails" />
       </div>
       <div></div>
+    </section>
+    <section id="login-page" class="home-page signup-login-display">
+      <div class="login-card-container">
+        <div class="login-tag-line-container">
+          <span class="tag-line1">Motivate yourself to</span
+          ><span class="tag-line2">achieve your goals.</span>
+        </div>
+        <div class="login-container">
+          <h1 class="signup-title">Login</h1>
+        </div>
+
+        <form class="login-form-container">
+          <p class="login-para">
+            Sign in with your email and password to get started.
+          </p>
+          <input class="signup login-email" type="email" placeholder="EMAIL" />
+          <input
+            class="signup login-password"
+            type="password"
+            placeholder="PASSWORD"
+          />
+
+          <p class="signup-terms">
+            By clicking the button below, you are indicating that you have read
+            and agree to the Terms of Service and Privacy Policy.
+          </p>
+          <button type="submit" class="signup-cta-btn">Login</button>
+        </form>
+      </div>
+      <div class="home-page-img-container">
+        <img class="home-page-img" src="bgr-nature .png" alt="" />
+      </div>
+
+      <div class="snail-img-container">
+        <img class="snail-img" src="bgr-snails.png" alt="3D image of snails" />
+      </div>
     </section>
     <section class="mini-circles-container">
       <div class="mini-circles"></div>
