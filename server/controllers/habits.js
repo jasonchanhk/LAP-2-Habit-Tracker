@@ -58,8 +58,7 @@ function checkCountPer(day, habitId) {
     }, day)
 }
 
-async function retrieveUserId(string) {
-    const token = string.split("=")[1]
+async function retrieveUserId(token) {
     const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     return decoded.id
 }
@@ -69,7 +68,7 @@ router.post("/",
     async (req, res) => {
 
 
-        const userId = await retrieveUserId(req.headers.cookie)
+        const userId = await retrieveUserId(req.cookies.jwt)
         const { title, description, rep, freq } = req.body
 
         try {
@@ -101,7 +100,7 @@ router.post("/",
 router.get("/",
     auth.protect,
     async (req, res) => {
-        const userId = await retrieveUserId(req.headers.cookie)
+        const userId = await retrieveUserId(req.cookies.jwt)
         try {
             const response = await habitModel.getHabitbyUserId(userId);
             res.send(response);
