@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10,100;0,100;0,200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10,100;0,100;0,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -89,7 +89,7 @@ body {
 
 .tag-line1 {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: italic;
   font-size: 2.5rem;
   opacity: 0.7;
@@ -97,7 +97,7 @@ body {
 
 .tag-line2 {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: italic;
   font-size: 2.5rem;
   opacity: 0.7;
@@ -113,7 +113,7 @@ body {
 
 .signup-title {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 4.8rem;
 }
@@ -128,7 +128,7 @@ body {
 .signup-para,
 .login-para {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
 }
 
@@ -163,7 +163,7 @@ body {
 
 .signup-terms {
   color: #000;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
 }
 
@@ -298,7 +298,7 @@ body {
 .user-page-body::before {
   background-image: url(snailpattern.png);
   opacity: 0.06;
-  content: "";
+  content: '';
   background-size: 25%;
   position: absolute;
   top: 20rem;
@@ -430,6 +430,9 @@ body {
   justify-items: center;
 }
 
+.user-name {
+  font-size: 25px;
+}
 .sword-svg-container {
   height: 5rem;
   width: 5rem;
@@ -509,7 +512,7 @@ body {
 
 .tag-txt {
   font-size: 1.4rem;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 .search-box {
   position: absolute;
@@ -517,7 +520,7 @@ body {
   right: 14.5%;
   font-size: 2rem;
   font-weight: 700;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .search-habit {
@@ -535,7 +538,7 @@ body {
   font-weight: 700;
   right: 45%;
   top: -4rem;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .habit-title-1 {
@@ -544,7 +547,7 @@ body {
   font-weight: 700;
   left: 10rem;
   top: -4rem;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .habit-list-container {
@@ -583,30 +586,18 @@ body {
   cursor: pointer;
 }
 
-.habit-input-box {
-  height: 6rem;
-  width: 35rem;
-  border-radius: 0.5rem;
-  font-size: 1.6rem;
-  padding-left: 1rem;
-  border-style: none;
-  margin: 2rem 6rem;
-  background-color: rgba(255, 255, 255, 0.857);
-}
-
-.habit-input-box:focus {
-  outline-color: #11d18e;
-}
-
 .habit-tabs-container {
-  margin: 0 auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
 }
+
 .habit-tabs {
   height: 8rem;
   width: 45rem;
   display: flex;
   flex-direction: row;
-  gap: 9rem;
+  margin: 10px auto;
   border-radius: 1.5rem;
   position: relative;
   background-image: linear-gradient(
@@ -618,10 +609,14 @@ body {
 
 .habit-text {
   font-size: 1.6rem;
+  width: 100%;
+  margin-right: 50px;
   color: #333;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .add-habit-btn-lft {
@@ -667,53 +662,53 @@ body {
 .tracker-info-box {
   display: flex;
   flex-direction: row;
-  margin: 3rem auto;
-  height: 7rem;
+  margin: 0.5rem auto;
+  height: 8rem;
   width: 70rem;
-  gap: 3rem;
   background-color: #fff;
   border-radius: 1.5rem;
   border-bottom: 3px dashed green;
   position: relative;
 }
 
+.tracker-info-box:first-child {
+  margin-top: 40px;
+}
+
 .tracker-box {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
-  height: 5rem;
+  padding: 1rem auto;
+  border-radius: 1.5rem 0 0 1.5rem;
+  height: 8rem;
   width: 7rem;
   border: 1px solid;
 }
 .one {
-  width: 12rem;
+  width: 55%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  align-items: center;
   border-style: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .two {
+  width: 15%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  align-items: center;
   border-style: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .tracker-result {
-  color: #000;
-  font-weight: 700;
   font-size: 1.6rem;
-}
-
-.three {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  height: 7rem;
-  border-style: none;
+  align-items: center;
+  justify-content: center;
 }
 
 hr {
@@ -721,48 +716,16 @@ hr {
   border-top: 2px solid blue;
 }
 
-.completion-nos {
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
 .tracker-text {
-  font-size: 1.4rem;
+  font-size: 2rem;
+  margin: 0px;
   color: rgba(51, 51, 51, 0.91);
   font-weight: 700;
+  text-align: center;
 }
 
-.tracker-difficulty {
-  color: green;
-  font-size: 1.3rem;
-}
-
-.four {
-  height: 5rem;
-  width: 12rem;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  border-style: none;
-}
-
-.tracker-checkbox {
-  cursor: pointer;
-}
 .tracker-checkbox:checked {
   background-color: #ff8200;
-}
-
-.five {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  align-items: center;
-  border-style: none;
 }
 
 .tracker-tt {
@@ -770,16 +733,62 @@ hr {
   font-size: 1.6rem;
 }
 
-.habit-delete-btn {
-  color: red;
-  font-size: 1.2rem;
-  font-weight: 700;
-  position: absolute;
-  right: 0.7rem;
-  top: 0.5rem;
-  cursor: pointer;
+.message-after-post {
+  text-align: center;
+  color: green;
 }
 
+.add_btn {
+  background-color: green; /* Green */
+  border: none;
+  color: white;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 50px;
+}
+
+.minus_btn {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.span-group {
+  font-size: 2rem;
+  width: 150px;
+}
+
+.habit-rep {
+  margin-left: 2px;
+}
+
+.habit-freq {
+  display: inline-block;
+  width: 70px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.habit-side-info {
+  font-size: 2rem;
+}
+
+.fa-clock-o {
+  color: grey;
+}
+
+.fa-check {
+  color: green;
+}
 /*************** Login Page ***************/
 
 .login-tag-line-container {
