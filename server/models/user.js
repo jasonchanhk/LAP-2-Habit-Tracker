@@ -52,6 +52,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+//Password Encryption (Salt & Hash)/////////////
 userSchema.pre("save", async function (next) {
   // Only run this function if password was actually modified
   if (!this.isModified("password")) return next();
