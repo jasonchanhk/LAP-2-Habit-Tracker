@@ -3,7 +3,7 @@ const router = express.Router();
 
 const auth = require("./auth");
 const habitModel = require('../models/habit')
-
+const User = require("./../models/user")
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 
@@ -109,8 +109,21 @@ router.get("/",
         }
     });
 
-// GET findHbaitByHabitId
+// GET findNameByUserId
 // GET '/:habitId'
+
+router.get("/name",
+    auth.protect,
+    async (req, res) => {
+        const userId = await retrieveUserId(req.cookies.jwt)
+        try {
+            const response = await User.getNamebyUserId(userId);
+            res.send(response);
+           
+        } catch (error) {
+            res.status(500).send(error);
+        }
+    });
 
 router.get("/:habitid",
     auth.protect,
