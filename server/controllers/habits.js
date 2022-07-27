@@ -194,14 +194,14 @@ router.delete("/:habitid",
     auth.protect,
     async (req, res) => {
 
-        console.log(req.params.habitid)
-        try {
-            const deleteResponse = await habitModel.deleteHabit(req.params.habitid);
-            res.send(deleteResponse);
-        } catch (error) {
-            res.status(500).send(error);
-        }
-    });
+    console.log(req.params.habitid)
+    try {
+        const deleteResponse = await habitModel.deleteHabit(req.params.habitid);
+        res.send(deleteResponse);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 
 
