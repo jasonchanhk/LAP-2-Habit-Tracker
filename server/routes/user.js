@@ -18,7 +18,7 @@ router
     userController.getAllUsers
   );
 
-router.route('/:id').get(authController.protect, userController.getOneUser)
+router.route('/one').get(authController.protect, userController.getOneUser)
 
 router.delete("/deleteMe", authController.protect, userController.deleteMe);
 

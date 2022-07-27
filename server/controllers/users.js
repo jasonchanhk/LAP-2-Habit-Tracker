@@ -19,7 +19,8 @@ exports.getAllUsers = catchAsync(async (req, res) => {
 });
 
 exports.getOneUser = catchAsync(async (req, res) => {
-  const user = await User.find({_id: req.params.id});
+  const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+  const user = await User.find({_id: decoded.id});
 
   if (!user) {
     return next(new AppError("No user found", 404));
