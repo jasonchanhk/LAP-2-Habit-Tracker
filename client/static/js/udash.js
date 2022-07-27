@@ -4,11 +4,8 @@ const rep = document.getElementById('rep-text');
 const frequency = document.getElementById('frequency-text');
 
 const submitBtn = document.getElementById('submit-button');
-
-const deleteBtn = document.getElementById('add-habit-btn-rgt')
-
-const habitContainer = document.querySelector('.habit-tabs-container')
-
+const deleteBtn = document.getElementById('add-habit-btn-rgt');
+const habitContainer = document.querySelector('.habit-tabs-container');
 const trackerContainer = document.querySelector('.tracker-container')
 
 async function clickToUpdateCount(habit, action) {
@@ -53,7 +50,12 @@ function renderTracker(habit) {
 
   const tracker_box_status = document.createElement('div')
   tracker_box_status.setAttribute('class', 'tracker-box two')
-  tracker_box_status.innerHTML = `<p class="tracker-text">Status</p><p class="tracker-result">none</p>`
+  if(habit.count == habit.rep){
+    tracker_box_status.innerHTML = `<i class="fa fa-check" style="font-size:50px;"></i>`
+  }else{
+    tracker_box_status.innerHTML = `<i class="fa fa-clock-o" style="font-size:50px;"></i>`
+  }
+  
 
   const add_btn = document.createElement('button')
   add_btn.textContent = '+'
@@ -109,7 +111,6 @@ async function fetchUserHabit() {
     plusBut.setAttribute('class', 'add-habit-btn-lft')
     plusBut.innerHTML = '<i class="fa fa-pencil" style="font-size:25px;"></i>'
 
-
     const titleParagraph = document.createElement('div')
     titleParagraph.setAttribute('class', 'habit-text')
     titleParagraph.innerHTML = `
@@ -122,11 +123,6 @@ async function fetchUserHabit() {
     minusBut.setAttribute('class', 'add-habit-btn-rgt')
     minusBut.onclick = () => {deletePostData(habit._id)}
     
-    // const counter = document.createElement('p')
-    // counter.textContent = `${habit.count}/${habit.rep} ${habit.freq}`
-
-
-
     div.append(plusBut, titleParagraph, minusBut)
 
     habitContainer.append(div)
@@ -149,7 +145,6 @@ async function postNewData() {
       },
       withCredentials: true,
     });
-    // console.log(result)
     if (result.request.status == 200) {
       const message = document.createElement('h3')
       message.textContent = 'Your habit has successfully been added!'
@@ -160,7 +155,7 @@ async function postNewData() {
 
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 500);
     }
   } catch (err) {
     console.log(err)
@@ -168,7 +163,6 @@ async function postNewData() {
 }
 
 async function deletePostData(id) {
-  // console.log(_id)
   try{
     const result = await axios({
       method: "DELETE",
@@ -176,14 +170,12 @@ async function deletePostData(id) {
       withCredentials: true,
     });
     console.log(result)
-    if (result.request.status == 200) {
-      // message.textContent = 'Your habit has successfully been deleted!'
-  
-      // alert('Your habit has successfully been deleted!')
+    if (result.request.status == 200) {  
+      alert("Habit Successfully Deleted!")
       console.log('Your habit has been deleted!')
       setTimeout(() => {
         window.location.reload();
-      }, 1000);
+      }, 500);
     }
   }catch(err){
 
@@ -196,9 +188,3 @@ submitBtn.addEventListener('click', (e) => {
   e.preventDefault();
   postNewData();
 });
-
-// deleteBtn.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   deletePostData(id)
-// });
-

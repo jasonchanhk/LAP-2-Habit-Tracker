@@ -779,6 +779,14 @@ hr {
 .habit-side-info{
   font-size: 2rem;
 }
+
+.fa-clock-o {
+  color: grey
+}
+
+.fa-check {
+  color: green;
+}
 /*************** Login Page ***************/
 
 .login-tag-line-container {
