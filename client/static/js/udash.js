@@ -53,7 +53,12 @@ function renderTracker(habit) {
 
   const tracker_box_status = document.createElement('div')
   tracker_box_status.setAttribute('class', 'tracker-box two')
-  tracker_box_status.innerHTML = `<p class="tracker-text">Status</p><p class="tracker-result">none</p>`
+  if(habit.count == habit.rep){
+    tracker_box_status.innerHTML = `<i class="fa fa-check" style="font-size:50px;"></i>`
+  }else{
+    tracker_box_status.innerHTML = `<i class="fa fa-clock-o" style="font-size:50px;"></i>`
+  }
+  
 
   const add_btn = document.createElement('button')
   add_btn.textContent = '+'
