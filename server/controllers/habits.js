@@ -157,18 +157,9 @@ router.patch("/:habitid/add",
     }
 });
 
-<<<<<<< HEAD
-// PATCH UpdateHabitById
-// PATCH '/:id'
-
-
-
-router.patch("/:habitid", async (req, res) => {
-=======
 router.patch("/:habitid/minus",
     auth.protect,
     async (req, res) => {
->>>>>>> d82ec74882bb338aed29b509812bf66d2e101990
 
     try {
         const habit = await habitModel.getHabitbyId(req.params.habitid);

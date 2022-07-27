@@ -48,7 +48,7 @@ async function fetchUserHabit(){
     plusBut.onclick = () => {clickToUpdateCount(habit, 'add')}
 
     const minusBut = document.createElement('button')
-    minusBut.textContent = '-'
+    minusBut.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>'
     minusBut.onclick = () => {clickToUpdateCount(habit, 'minus')}
 
     const div = document.createElement('div')
