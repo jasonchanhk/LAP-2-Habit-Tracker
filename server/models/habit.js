@@ -96,7 +96,7 @@ class HabitService{
 
     static async deleteHabit(habitId){
         try {
-            const deletedResponse = await Habit.findOneAndDelete(habitId);
+            const deletedResponse = await Habit.deleteOne({_id : habitId});
             return deletedResponse;
         } catch (error) {
             console.log(`Could not delete Habit ${error}`);
