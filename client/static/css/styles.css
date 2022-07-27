@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10,100;0,100;0,200&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10,100;0,100;0,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;1,300&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -89,7 +89,7 @@ body {
 
 .tag-line1 {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: italic;
   font-size: 2.5rem;
   opacity: 0.7;
@@ -97,7 +97,7 @@ body {
 
 .tag-line2 {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: italic;
   font-size: 2.5rem;
   opacity: 0.7;
@@ -113,7 +113,7 @@ body {
 
 .signup-title {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
   font-size: 4.8rem;
 }
@@ -128,7 +128,7 @@ body {
 .signup-para,
 .login-para {
   color: #fff;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
 }
 
@@ -163,7 +163,7 @@ body {
 
 .signup-terms {
   color: #000;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
 }
 
@@ -298,7 +298,7 @@ body {
 .user-page-body::before {
   background-image: url(snailpattern.png);
   opacity: 0.06;
-  content: "";
+  content: '';
   background-size: 25%;
   position: absolute;
   top: 20rem;
@@ -430,6 +430,9 @@ body {
   justify-items: center;
 }
 
+.user-name {
+  font-size: 25px;
+}
 .sword-svg-container {
   height: 5rem;
   width: 5rem;
@@ -509,7 +512,7 @@ body {
 
 .tag-txt {
   font-size: 1.4rem;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 .search-box {
   position: absolute;
@@ -517,7 +520,7 @@ body {
   right: 14.5%;
   font-size: 2rem;
   font-weight: 700;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .search-habit {
@@ -535,7 +538,7 @@ body {
   font-weight: 700;
   right: 45%;
   top: -4rem;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .habit-title-1 {
@@ -544,7 +547,7 @@ body {
   font-weight: 700;
   left: 10rem;
   top: -4rem;
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .habit-list-container {
@@ -588,7 +591,6 @@ body {
   margin-right: 10px;
   margin-top: 20px;
 }
-
 
 .habit-tabs {
   height: 8rem;
@@ -669,7 +671,7 @@ body {
   position: relative;
 }
 
-.tracker-info-box:first-child{
+.tracker-info-box:first-child {
   margin-top: 40px;
 }
 
@@ -733,7 +735,7 @@ hr {
 
 .message-after-post {
   text-align: center;
-  color: green
+  color: green;
 }
 
 .add_btn {
@@ -776,12 +778,12 @@ hr {
   text-align: left;
 }
 
-.habit-side-info{
+.habit-side-info {
   font-size: 2rem;
 }
 
 .fa-clock-o {
-  color: grey
+  color: grey;
 }
 
 .fa-check {
