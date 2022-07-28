@@ -20,6 +20,13 @@ const signup = async (name, email, password, passwordConfirm) => {
     });
 
     console.log(result);
+    if (result.data.status === "success") {
+      window.setTimeout(() => {
+        location.assign(
+          "/LAP2-Assignment/team3Project/Lap-2-Habit-Tracker/Client/udash.html?"
+        );
+      }, 50);
+    }
   } catch (err) {
     console.log(err.response.data);
   }
@@ -47,4 +54,7 @@ display.addEventListener("click", (e) => {
   document
     .querySelector("#login-page")
     .classList.toggle("signup-login-display");
+  e.target.textContent === "Login"
+    ? (e.target.textContent = "Register")
+    : (e.target.textContent = "Login");
 });
