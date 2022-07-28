@@ -12,10 +12,16 @@ const login = async (email, password) => {
 
     console.log(result);
     if (result.data.status === "success") {
+<<<<<<< HEAD
       window.setTimeout(() => {
         location.assign(
           "/LAP2-Assignment/team3Project/Lap-2-Habit-Tracker/Client/udash.html?"
         );
+=======
+      alert("Login was successfull!");
+      window.setTimeout(() => {
+        location.assign("/client/udash.html");
+>>>>>>> b93064ca3dd069e601dd155277b4e6ad1b43d9a8
       }, 50);
     }
   } catch (err) {
