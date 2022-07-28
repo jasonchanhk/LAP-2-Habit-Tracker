@@ -13,9 +13,7 @@ const login = async (email, password) => {
     console.log(result);
     if (result.data.status === "success") {
       window.setTimeout(() => {
-        location.assign(
-          "/LAP2-Assignment/team3Project/Lap-2-Habit-Tracker/Client/udash.html?"
-        );
+        location.assign("/client/udash.html");
       }, 50);
     }
   } catch (err) {
