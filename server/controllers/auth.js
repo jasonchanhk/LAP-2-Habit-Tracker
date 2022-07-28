@@ -13,14 +13,17 @@ const signToken = (id) => {
 const createSendToken = (user, statusCode, req, res) => {
   const token = signToken(user._id);
 
-  res.cookie("jwt", token, {
+  const cookieOptions = {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
+  };
+  if (process.env.NODE_ENV === "production") {
+    cookieOptions.secure = true;
+  }
 
-    // secure: req.secure || req.headers["x-forwarded-proto"] === "https",
-  });
+  res.cookie("jwt", token, cookieOptions);
 
   // Remove password from output
   user.password = undefined;
@@ -63,6 +66,14 @@ exports.login = catchAsync(async (req, res, next) => {
   // 3) If everything ok, send token to client
   createSendToken(user, 200, req, res);
 });
+
+exports.logout = (req, res) => {
+  res.cookie("jwt", "loggedout", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({ status: "success" });
+};
 //////////////////////////////////////////////////////// The protect function below needs to be required in the UserDatabase (const authController = require ./..controller/authController);file, and also added as a middleware before the routes is made accessible to the client. (authController.protect)////////////\\\\\\\\\\\\\\\\\\\\\\\\\/////////////////////////////
 exports.protect = catchAsync(async (req, res, next) => {
   // 1) Getting the token and check if it's there

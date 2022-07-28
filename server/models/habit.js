@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const HabitSchema = new mongoose.Schema({
   userId: {
-    type: Number,
+    type: String,
     required: true,
   },
   title: {
@@ -85,7 +85,7 @@ class HabitService{
 
     static async updateHabit(habitId, changes){
             try {
-                const updateResponse =  await Habit.findByIdAndUpdate(habitId, changes, {new: true});
+                const updateResponse =  await Habit.findByIdAndUpdate(habitId, changes, {new: true, runValidators: true});
                 return updateResponse;
             } catch (error) {
                 console.log(`Could not update Habit ${error}` );

@@ -5,10 +5,11 @@ const userController = require("./../controllers/users");
 
 const router = express.Router();
 
+router.use(authController.isLoggedIn);
+
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
-
-router.use(authController.isLoggedIn);
+router.get("/logout", authController.logout);
 
 router
   .route("/")
