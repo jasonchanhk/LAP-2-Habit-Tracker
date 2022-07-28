@@ -13,7 +13,7 @@ const login = async (email, password) => {
     console.log(result);
     if (result.data.status === "success") {
       window.setTimeout(() => {
-        location.assign("/client/udash.html");
+        location.assign("/udash.html");
       }, 50);
     }
   } catch (err) {

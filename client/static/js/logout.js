@@ -7,7 +7,7 @@ const logout = async () => {
     });
     if ((res.data.status = "success"))
       location.assign(
-        "/client/index.html?"
+        "/index.html"
       );
   } catch (err) {
     console.log(err.response);

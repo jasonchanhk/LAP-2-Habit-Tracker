@@ -37,7 +37,7 @@ async function clickToUpdateCount(habit, action) {
 
         setTimeout(() => {
           window.location.reload();
-        }, 500);
+        }, 50);
       }
     } catch (err) {
       console.log(err);
@@ -173,7 +173,7 @@ async function postNewData() {
 
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 50);
     }
   } catch (err) {
     console.log(err);
@@ -193,7 +193,7 @@ async function deletePostData(id) {
       console.log('Your habit has been deleted!');
       setTimeout(() => {
         window.location.reload();
-      }, 500);
+      }, 50);
     }
   } catch (err) {}
 }

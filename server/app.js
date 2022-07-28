@@ -14,7 +14,7 @@ const habitRouter = require("./controllers/habits");
 const app = express();
 
 // Global Middlewares
-app.use(cors({ origin: "http://127.0.0.1:5500", credentials: true }));
+app.use(cors({ origin: "https://subtle-biscuit-10204a.netlify.app/", credentials: true }));
 
 //serve static files
 app.use(express.static(`${__dirname}/public`));

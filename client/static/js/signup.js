@@ -23,7 +23,7 @@ const signup = async (name, email, password, passwordConfirm) => {
     if (result.data.status === "success") {
       window.setTimeout(() => {
         location.assign(
-          "/client/udash.html"
+          "/udash.html"
         );
       }, 50);
     }
