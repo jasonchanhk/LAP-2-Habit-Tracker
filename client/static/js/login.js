@@ -2,7 +2,7 @@ const login = async (email, password) => {
   try {
     const result = await axios({
       method: "POST",
-      url: "http://127.0.0.1:8000/users/login",
+      url: "https://lap-2-habit-tracker.herokuapp.com/users/login",
       data: {
         email,
         password,

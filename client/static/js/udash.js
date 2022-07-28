@@ -21,9 +21,9 @@ async function clickToUpdateCount(habit, action) {
   } else {
     let url;
     if (action == 'add') {
-      url = `http://127.0.0.1:8000/habits/${habit._id}/add`;
+      url = `https://lap-2-habit-tracker.herokuapp.com/habits/${habit._id}/add`;
     } else if (action == 'minus') {
-      url = `http://127.0.0.1:8000/habits/${habit._id}/minus`;
+      url = `https://lap-2-habit-tracker.herokuapp.com/habits/${habit._id}/minus`;
     }
     console.log(url);
     try {
@@ -108,14 +108,14 @@ function renderTracker(habit) {
 async function fetchUserHabit() {
   const userData = await axios({
     method: 'GET',
-    url: `http://127.0.0.1:8000/users/one`,
+    url: `https://lap-2-habit-tracker.herokuapp.com/users/one`,
     withCredentials: true,
   });
   userName.textContent = `${userData.data.data.user[0].name}`;
   console.log(userData);
   const result = await axios({
     method: 'GET',
-    url: 'http://127.0.0.1:8000/habits',
+    url: 'https://lap-2-habit-tracker.herokuapp.com/habits',
     withCredentials: true,
   });
 
@@ -154,7 +154,7 @@ async function postNewData() {
   try {
     const result = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:8000/habits',
+      url: 'https://lap-2-habit-tracker.herokuapp.com/habits',
       data: {
         title: title.value,
         description: description.value,
@@ -184,7 +184,7 @@ async function deletePostData(id) {
   try {
     const result = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:8000/habits/${id}`,
+      url: `https://lap-2-habit-tracker.herokuapp.com/habits/${id}`,
       withCredentials: true,
     });
     console.log(result);
@@ -201,7 +201,7 @@ async function deletePostData(id) {
 async function getUserInfo() {
   const result = await axios({
     method: 'GET',
-    url: `http://127.0.0.1:8000/users/one`,
+    url: `https://lap-2-habit-tracker.herokuapp.com/users/one`,
     withCredentials: true,
   });
   console.log(result);

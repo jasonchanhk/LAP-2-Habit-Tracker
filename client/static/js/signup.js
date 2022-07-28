@@ -9,7 +9,7 @@ const signup = async (name, email, password, passwordConfirm) => {
   try {
     const result = await axios({
       method: "POST",
-      url: "http://127.0.0.1:8000/users/signup",
+      url: "https://lap-2-habit-tracker.herokuapp.com/users/signup",
       data: {
         name,
         email,
@@ -23,7 +23,7 @@ const signup = async (name, email, password, passwordConfirm) => {
     if (result.data.status === "success") {
       window.setTimeout(() => {
         location.assign(
-          "/LAP2-Assignment/team3Project/Lap-2-Habit-Tracker/Client/udash.html?"
+          "/client/udash.html"
         );
       }, 50);
     }
