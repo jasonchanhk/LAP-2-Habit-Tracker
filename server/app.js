@@ -17,7 +17,7 @@ const app = express();
 app.use(cors({ origin: "https://subtle-biscuit-10204a.netlify.app", credentials: true }));
 
 //serve static files
-app.use(express.static(`${__dirname}/public`));
+app.use('/static', express.static('client'))
 
 // Set security HTTP headers
 app.use(helmet());
