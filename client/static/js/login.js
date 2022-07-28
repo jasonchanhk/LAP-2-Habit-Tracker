@@ -1,5 +1,3 @@
-// import { showAlert } from "./alerts";
-
 const login = async (email, password) => {
   try {
     const result = await axios({
@@ -14,7 +12,6 @@ const login = async (email, password) => {
 
     console.log(result);
     if (result.data.status === "success") {
-      alert("Login was successfull!");
       window.setTimeout(() => {
         location.assign("/client/udash.html");
       }, 50);
@@ -31,7 +28,6 @@ document
   .querySelector(".login-form-container")
   .addEventListener("submit", (e) => {
     e.preventDefault();
-
     const email = document.querySelector(".login-email").value;
     const password = document.querySelector(".login-password").value;
 
